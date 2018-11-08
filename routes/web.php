@@ -1,5 +1,5 @@
 <?php
-
+use App\Model\Page;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -10,10 +10,23 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+$pages = Page::all();
+if($pages == null){
+    Route::get('/',function(){
+        return view('default.index');
+    });
+}else{
+    foreach($pages as $page){
+        Route::get('/','PageController@index');
 
-Route::get('/', function () {
-    return view('welcome');
-});
+    }
+}
+
+
+
+
+
+
 
 
 Route::group(['prefix' => 'admin'], function () {

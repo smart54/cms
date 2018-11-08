@@ -1,0 +1,1 @@
+@extends('templates.app')@section('title',Главная)@section('page'){!! $page -> body !!}@endsection
